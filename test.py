@@ -11,7 +11,7 @@ Base.query = db_session.query_property()
 
 class Meizi(Base):
     __tablename__ = 'meizi'
-    id = Column(Integer, primary_key=True,autoincrement=1)
+    id = Column(Integer, primary_key=True, autoincrement=1)
     filename = Column(String(30), unique=True)
 
     def __init__(self, filename=None):
@@ -22,7 +22,7 @@ class Meizi(Base):
 
 class CDN(Base):
     __tablename__ = 'cdn'
-    id = Column(Integer, primary_key=True,autoincrement=1)
+    id = Column(Integer, primary_key=True, autoincrement=1)
     cdnurl = Column(String(50), unique=True)
 
     def __init__(self, url=None):
