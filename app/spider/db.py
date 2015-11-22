@@ -2,7 +2,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, func
 import os
 import os.path
 
@@ -21,6 +21,14 @@ class Meizi(Base):
         self.filename = filename
     def __repr__(self):
         return '<User %r>' % (self.name)
+
+    def isExist(self):
+        db_session.query(self).filter(Meizi.filename == self.filename).first()
+
+    @staticmethod
+    def getRandomN(n):
+        meizis = db_session.query(Meizi.filename).order_by(Meizi.id).limit(n).all()
+        return meizis
 
 class CDN(Base):
     __tablename__ = 'cdn'

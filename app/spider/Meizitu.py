@@ -57,7 +57,8 @@ def downloadImageFile(imgUrl):
     return local_filename
 
 
-def main():
+def spider():
+
     for i in range(1, 50000, 1):
         print "尝试下载第%d张图片:" % i
         picUrl = getPicUrls(i)
@@ -78,4 +79,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    spider()
