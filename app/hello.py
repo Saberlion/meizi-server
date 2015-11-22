@@ -1,15 +1,10 @@
-import json
-
-__author__ = 'arthur'
-
-from datetime import datetime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from spider.db import Meizi
 
 app = Flask(__name__)
-app.config.from_pyfile('hello.cfg')
+#app.config.from_pyfile('hello.cfg')
 db = SQLAlchemy(app)
 class res:
     code =''
