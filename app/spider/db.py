@@ -62,8 +62,8 @@ def drop_db():
     Base.metadata.drop_all(engine)
 
 
-def read():
-    rootdir = "C:\\Users\\fxre\\Downloads\\meizi" #指明被遍历的文件夹
+def read(rootdir):
+    #rootdir = "C:\\Users\\fxre\\Downloads\\meizi" #指明被遍历的文件夹
     counter = 0
     #三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
     for parent,dirnames,filenames in os.walk(rootdir):
@@ -80,9 +80,16 @@ def read():
                 print e
 
 try:
-    drop_db()
+    #drop_db()
     init_db()
     db_session.commit()
-    read()
 except Exception as e:
     print e
+
+def DB_ADD(item):
+    try:
+        db_session.add(item)
+        db_session.commit()
+    except Exception as e:
+        print e
+        db_session.rollback()
