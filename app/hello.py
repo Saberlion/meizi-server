@@ -20,18 +20,9 @@ class res:
         self.msg = msg
         self.res = res
 
-
-
-@app.route('/meizi/<int:num>',methods=['GET'])
-def meizi(num):
-    meizis = Meizi.getRandomN(num)
-    return jsonify(
-        {
-        "code":0,
-        "msg":'success',
-        "meizi":meizis
-        }
-    )
+@app.route('/')
+def hello():
+    return "hello"
 
 @app.route('/meizi/<int:num>',methods=['GET'])
 def meizi(num):
