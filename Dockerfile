@@ -4,7 +4,7 @@ MAINTAINER saberlion <admin@saberlion.info>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get -y install gcc nginx  sed python-pip python-dev uwsgi-plugin-python supervisor libxml2 libxml2-dev libxslt1-dev
+RUN apt-get -y install gcc nginx  sed python-pip python-dev uwsgi-plugin-python supervisor libxml2 libxml2-dev libxslt1-dev  zlib1g-dev
 
 RUN mkdir -p /var/log/nginx/app
 RUN mkdir -p /var/log/uwsgi/app/
