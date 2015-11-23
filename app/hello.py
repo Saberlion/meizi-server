@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, jsonify
 
 from db import Meizi, DB_ADD
@@ -20,14 +22,17 @@ def hello():
 
 @app.route('/api/meizi/<int:num>/random',methods=['GET'])
 def getRandomMeizi(num):
-    meizis = Meizi.getRandomN(num)
-    return jsonify(
-        {
-        "code":0,
-        "msg":'success',
-        "meizi":meizis
-        }
-    )
+    randomMeizi = Meizi.getRandomN(num)
+
+    meizis = []
+    for item in randomMeizi:
+        meizis.append({'filename':item.filename})
+
+    res = {}
+    res['code']=0
+    res['msg']='success'
+    res['meizi']=meizis
+    return json.dumps(res)
 
 @app.route('/api/meizi/<filename>/upload',methods=['GET'])
 def meizi_upload(filename):

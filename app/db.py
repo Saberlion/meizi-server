@@ -19,21 +19,23 @@ class Meizi(Base):
     filename = Column(String(30), unique=True)
     def __init__(self, filename=None):
         self.filename = filename
-    def __repr__(self):
-        return '<User %r>' % (self.name)
+
 
     def isExist(self):
         db_session.query(self).filter(Meizi.filename == self.filename).first()
 
+    def __repr__(self):
+        return '%d:%r' % (self.id , self.filename)
+
     @staticmethod
     def getRandomN(n):
         res = db_session.query(Meizi).order_by(func.random()).limit(n).all()
-        meizis = {}
-        i =0
-        for item in res:
-            meizis[i] = res[i].filename
-            i+=1
-        return meizis
+#        meizis = {}
+#        i =0
+#        for item in res:
+ #           meizis[i] = res[i].filename
+#            i+=1
+        return res
 
 class CDN(Base):
     __tablename__ = 'cdn'
