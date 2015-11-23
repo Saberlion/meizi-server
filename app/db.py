@@ -27,7 +27,12 @@ class Meizi(Base):
 
     @staticmethod
     def getRandomN(n):
-        meizis = db_session.query(Meizi.filename).order_by(Meizi.id).limit(n).all()
+        res = db_session.query(Meizi).order_by(func.random()).limit(n).all()
+        meizis = {}
+        i =0
+        for item in res:
+            meizis[i] = res[i].filename
+            i+=1
         return meizis
 
 class CDN(Base):
