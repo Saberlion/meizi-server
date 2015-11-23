@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 
-from app.db import Meizi, DB_ADD
+from db import Meizi, DB_ADD
 
 app = Flask(__name__)
 #app.config.from_pyfile('hello.cfg')
