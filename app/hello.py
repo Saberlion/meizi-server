@@ -1,7 +1,6 @@
-from flask import Flask, request, flash, url_for, redirect, \
-     render_template, abort, jsonify
+from flask import Flask, jsonify
 
-from spider.db import Meizi, DB_ADD
+from app.db import Meizi, DB_ADD
 
 app = Flask(__name__)
 #app.config.from_pyfile('hello.cfg')
@@ -42,4 +41,4 @@ def meizi_upload(filename):
     )
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

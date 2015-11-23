@@ -1,10 +1,10 @@
 # -*- coding:utf8 -*-
 
-import time
 import requests
-import sqlalchemy
+import time
 from lxml import etree
-from db import db_session, ErrorPage, ErrDLPic, Meizi,DB_ADD
+
+from app.db import ErrorPage, ErrDLPic, Meizi,DB_ADD
 
 
 def getPicUrls(num):
