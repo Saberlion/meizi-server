@@ -1,7 +1,7 @@
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, jsonify
 
-from spider.db import Meizi
+from spider.db import Meizi, DB_ADD
 
 app = Flask(__name__)
 #app.config.from_pyfile('hello.cfg')
@@ -19,14 +19,25 @@ class res:
 def hello():
     return "hello"
 
-@app.route('/meizi/<int:num>',methods=['GET'])
-def meizi(num):
+@app.route('/api/meizi/<int:num>',methods=['GET'])
+def getRandomMeizi(num):
     meizis = Meizi.getRandomN(num)
     return jsonify(
         {
         "code":0,
         "msg":'success',
         "meizi":meizis
+        }
+    )
+
+@app.route('/api/meizi/<filename>/upload',methods=['GET'])
+def meizi_upload(filename):
+    DB_ADD(Meizi(filename))
+    return jsonify(
+        {
+        "code":0,
+        "msg":'success',
+        "meizi":filename
         }
     )
 
