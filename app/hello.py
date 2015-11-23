@@ -18,7 +18,7 @@ class res:
 def hello():
     return "hello"
 
-@app.route('/api/meizi/<int:num>',methods=['GET'])
+@app.route('/api/meizi/<int:num>/random',methods=['GET'])
 def getRandomMeizi(num):
     meizis = Meizi.getRandomN(num)
     return jsonify(

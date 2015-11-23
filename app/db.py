@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String, func
 import os
 import os.path
 
-engine = create_engine('sqlite:///./db/meizi.db', convert_unicode=True)
+engine = create_engine('sqlite:///./meizi.db', convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
